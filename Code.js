@@ -72,7 +72,8 @@ function getPickerData() {
   return {
     token: ScriptApp.getOAuthToken(),
     appId: "894291576093",
-    developerKey: "",
+    developerKey:
+      PropertiesService.getScriptProperties().getProperty("PICKER_API_KEY"),
   };
 }
 
