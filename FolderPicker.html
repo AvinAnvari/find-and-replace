@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+  <script src="https://apis.google.com/js/api.js"></script>
+</head>
+<body>
+  <p id="result">Loading picker...</p>
+
+  <script>
+    let pickerLoaded = false;
+    let pickerData = null;
+
+    google.script.run
+      .withSuccessHandler(function(data) {
+        pickerData = data;
+        loadPicker();
+      })
+      .withFailureHandler(showError)
+      .getPickerData();
+
+    function loadPicker() {
+      gapi.load('picker', function() {
+        pickerLoaded = true;
+        openPicker();
+      });
+    }
+
+    function openPicker() {
+      if (!pickerLoaded || !pickerData) return;
+
+      let view = new google.picker.DocsView(google.picker.ViewId.FOLDERS)
+        .setIncludeFolders(true)
+        .setSelectFolderEnabled(true)
+        .setMode(google.picker.DocsViewMode.LIST);
+
+      let picker = new google.picker.PickerBuilder()
+        .setOAuthToken(pickerData.token)
+        .setDeveloperKey(pickerData.developerKey)
+        .setAppId(pickerData.appId)
+        .setOrigin(google.script.host.origin)
+        .addView(view)
+        .setCallback(pickerCallback)
+        .build();
+
+      picker.setVisible(true);
+    }
+
+   function pickerCallback(data) {
+  if (data.action === google.picker.Action.PICKED) {
+    let folderId = data.docs[0].id;
+    document.getElementById('result').textContent = 'Processing your folder...';
+
+    google.script.run
+      .withSuccessHandler(function(url) {
+        document.getElementById('result').innerHTML = 
+          'Done! <a href="' + url + '" target="_blank">Open folder</a>';
+      })
+      .withFailureHandler(showError)
+      .getEachDocument(folderId);
+  } else if (data.action === google.picker.Action.CANCEL) {
+    google.script.host.close();
+  }
+}
+    function showError(e) {
+      document.getElementById('result').textContent = 'Error: ' + e.message;
+    }
+  </script>
+</body>
+</html>

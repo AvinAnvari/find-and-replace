@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+  <style>
+    body {
+      font-family: 'Google Sans', Roboto, Arial, sans-serif;
+      padding: 16px;
+      color: #202124;
+      line-height: 1.6;
+    }
+    
+    h2 {
+      font-size: 18px;
+      font-weight: 500;
+      color: #1a73e8;
+      margin: 0 0 16px 0;
+    }
+    
+    .step {
+      display: flex;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+    
+    .step-number {
+      background: #1a73e8;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-right: 12px;
+    }
+    
+    .step-content {
+      flex: 1;
+    }
+    
+    .step-title {
+      font-weight: 500;
+      margin-bottom: 4px;
+      color: #202124;
+    }
+    
+    .step-description {
+      font-size: 13px;
+      color: #5f6368;
+    }
+    
+    .example-box {
+      background: #f8f9fa;
+      border: 1px solid #e8eaed;
+      border-radius: 8px;
+      padding: 12px;
+      margin: 12px 0;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 12px;
+    }
+    
+    .example-row {
+      display: flex;
+      margin-bottom: 4px;
+    }
+    
+    .example-row:last-child {
+      margin-bottom: 0;
+    }
+    
+    .col-a {
+      width: 120px;
+      color: #1a73e8;
+      font-weight: 500;
+    }
+    
+    .col-b {
+      color: #34a853;
+    }
+    
+    .tip {
+      background: #e8f0fe;
+      border-left: 4px solid #1a73e8;
+      padding: 12px;
+      margin: 16px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 13px;
+    }
+    
+    .tip-title {
+      font-weight: 500;
+      color: #1a73e8;
+      margin-bottom: 4px;
+    }
+    
+    .close-btn {
+      background: #1a73e8;
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 16px;
+    }
+    
+    .close-btn:hover {
+      background: #1557b0;
+    }
+  </style>
+</head>
+<body>
+  <h2>How to Use Find and Replace</h2>
+  
+  <div class="step">
+    <div class="step-number">1</div>
+    <div class="step-content">
+      <div class="step-title">Set up your placeholders</div>
+      <div class="step-description">
+        In your spreadsheet, create two columns:
+        <ul>
+          <li><strong>Column A:</strong> Placeholder text (what to find)</li>
+          <li><strong>Column B:</strong> Replacement value (what to replace it with)</li>
+        </ul>
+      </div>
+      <div class="example-box">
+        <div class="example-row">
+          <span class="col-a">[[NAME]]</span>
+          <span class="col-b">John Smith</span>
+        </div>
+        <div class="example-row">
+          <span class="col-a">[[DATE]]</span>
+          <span class="col-b">January 19, 2025</span>
+        </div>
+        <div class="example-row">
+          <span class="col-a">[[COMPANY]]</span>
+          <span class="col-b">Acme Corp</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="step">
+    <div class="step-number">2</div>
+    <div class="step-content">
+      <div class="step-title">Select your data</div>
+      <div class="step-description">
+        Highlight all the cells containing your placeholder-value pairs (both columns).
+      </div>
+    </div>
+  </div>
+  
+  <div class="step">
+    <div class="step-number">3</div>
+    <div class="step-content">
+      <div class="step-title">Name your output folder (optional)</div>
+      <div class="step-description">
+        Enter a name for the folder where edited copies will be saved. Leave blank to create the folder inside your selected source folder.
+      </div>
+    </div>
+  </div>
+  
+  <div class="step">
+    <div class="step-number">4</div>
+    <div class="step-content">
+      <div class="step-title">Select your template folder</div>
+      <div class="step-description">
+        Click <strong>"Select Folder"</strong> and choose the Google Drive folder containing your template documents. These are the Google Docs with placeholder text.
+      </div>
+    </div>
+  </div>
+  
+  <div class="step">
+    <div class="step-number">5</div>
+    <div class="step-content">
+      <div class="step-title">Get your edited documents</div>
+      <div class="step-description">
+        The add-on will create copies of each document with all placeholders replaced. You'll get a link to the new folder when complete.
+      </div>
+    </div>
+  </div>
+  
+  <div class="tip">
+    <div class="tip-title">💡 Tip</div>
+    Your original template documents are never modified. The add-on only works on copies.
+  </div>
+  
+  <button class="close-btn" onclick="google.script.host.close()">Got it</button>
+</body>
+</html>
