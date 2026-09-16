@@ -1,6 +1,10 @@
 # Find and Replace
 
 [![Watch the demo](https://img.youtube.com/vi/juK6ar-hdtE/hqdefault.jpg)](https://youtu.be/juK6ar-hdtE)
+^
+|
+|
+DEMO VIDEO
 
 A Google Sheets add-on that batch-copies and edits Google Docs by replacing placeholder text with values pulled directly from a spreadsheet.
 
