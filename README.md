@@ -44,4 +44,4 @@ This project is bound to a Google Sheet and deployed through the Apps Script edi
 ## Notes
 
 - API keys are read from `PropertiesService.getScriptProperties()` at runtime and are never committed to source
-- Originally built in 2025 as a personal productivity tool, later published as a Workspace Marketplace add-on
+- Originally built in 2025 for a medical device QMS consulting company, later published as a Workspace Marketplace add-on
